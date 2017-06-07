@@ -2,11 +2,7 @@
 <html ng-app="app">
   <head>
     <!-- to have access to local or global scripts -->
-    <script>
-    require(process.cwd() + '/node_modules/benja').paths();
-    require(process.cwd() + '/node_modules/angular').paths();
-    require(process.cwd() + '/node_modules/rpi-gpio').paths();
-    </script>
+    
     <!-- for debugging purpose -->
     <script>document.documentElement.ondblclick=()=>location.reload();</script>
     <script src="jquery.js"></script>
@@ -14,9 +10,9 @@
     <script src="gpio.js"></script>
     <script src="config.js"></script>
     <script src="FillController.js"></script>
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-
+    <script>
+    require(process.cwd() + '/node_modules/benja').paths();
+    </script>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
@@ -76,7 +72,7 @@
       <h2>Tecnologia Inteligente em sua Casa</h2>
     </header>
     <main>
-	  <!--video id="camera" autoplay> </video-->	
+	  <video id="camera" autoplay> </video-->	
     </main>
     <script>
     const
