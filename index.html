@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <!-- to have access to local or global scripts -->
+    <script>
+    require(process.cwd() + '/node_modules/benja').paths();
+    require(process.cwd() + '/node_modules/angular').paths();
+    require(process.cwd() + '/node_modules/rpi-gpio').paths();
+    </script>
+    <!-- for debugging purpose -->
+    <script>document.documentElement.ondblclick=()=>location.reload();</script>
+    <script src="jquery.js"></script>
+    <script src="app.js"></script>
+    <script src="gpio.js"></script>
+    <script src="config.js"></script>
+    <script src="FillController.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+
+      html {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        background: #292929;
+        color: #eeeeec;
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        color: #ffffff;
+      }
+
+      h2 {
+        font-weight: lighter;
+        font-size: 1.2rem;
+        color: #8c8c8b;
+        margin-bottom: 0;
+      }
+
+      p:first-child {
+        font-weight: bold;
+      }
+
+      img {
+        width: 30vh;
+        height: 30vh;
+      }
+
+    </style>
+    <title>Benja OS</title>
+  </head>
+  <body>
+    <header>
+      <img src="logo-hr-transparente.png">
+      <h1>FILL</h1>
+      <h2>Tecnologia Inteligente em sua Casa</h2>
+    </header>
+    <main>
+	  <!--video id="camera" autoplay> </video-->	
+    </main>
+    <script>
+    const
+      main = document.querySelector('main'),
+      findReachableIPV4Address = () => {
+        const ni = require('os').networkInterfaces();
+        return Object.keys(ni).reduce((out, key) => {
+          return ni[key].reduce((out, iface) => {
+            if (iface.family === 'IPv4' && iface.address !== '127.0.0.1') {
+              out.push(iface.address);
+            }
+            return out;
+          }, out);
+        }, []);
+      }
+    ;
+
+    findReachableIPV4Address().forEach(function (ip) {
+      main.appendChild(
+        document.createElement('p')
+      ).textContent = ip;
+    });
+
+
+    </script>
+  </body>
+</html>
